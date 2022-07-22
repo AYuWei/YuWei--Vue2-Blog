@@ -1,28 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="contact"> 
+        <WLayout>
+          <template #left>
+            <div class="aside">
+              <WAside />
+            </div>
+          </template>
+          <template #default> 
+          </template>
+           
+        </WLayout> 
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import WLayout from "@/components/WLayout/WLayout.vue"; 
+import WAside from "@/components/WAside/WAside.vue"
+export default { 
+  // 全局注册组件
+  components : {
+    WLayout,
+    WAside,
   }
 }
+
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="less">
+@import "~@/styles/var.less";
+#app{
+  position:fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  .contact{
+    width: 100%;
+    height: 100%;
+  }
+}
+.aside{
+  width:250px;
+  height: 100%;
 }
 </style>
