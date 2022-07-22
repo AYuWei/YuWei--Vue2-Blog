@@ -1,18 +1,15 @@
 <template>
     <div class="menu-container">
-        <a 
+        <router-link 
             v-for="item in items"
-            :key="item.link"
-            :href="item.link"
-            :class="{
-                selected:isSelected(item),
-            }"
+            :key="item.name"  
+            :to="{name:item.name}"
         >
             <div class="icon">
                 <WIcon :type="item.icon"></WIcon>
             </div>
             <span>{{item.title}}</span>
-        </a> 
+        </router-link> 
     </div>
 </template>
 <script>
@@ -23,32 +20,31 @@ export default {
     },
     data(){
         return {
-            items : [
-                {
-                    link:"/",
+            items :  [
+                {   
+                    name:"Home", 
                     title : "首页",
-                    icon : "home"
+                    icon : "home", 
                 },
                 {
-                    link:"/blog",
+                    name:"Blog", 
                     title : "文章",
-                    icon : "blog",
-                    startWith : true
+                    icon : "blog",  
                 },
                 {
-                    link:"/about",
+                    name:"About", 
                     title : "关于我",
-                    icon : "about"
+                    icon : "about", 
                 },
                 {
-                    link:"/project",
+                    name:"Project", 
                     title : "项目&效果",
-                    icon : "code"
+                    icon : "code", 
                 },
                 {
-                    link:"/message",
+                    name:"Message", 
                     title : "留言板",
-                    icon : "chat"
+                    icon : "chat", 
                 },
             ]
         }

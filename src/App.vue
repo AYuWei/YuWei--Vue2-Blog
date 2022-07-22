@@ -8,6 +8,7 @@
             </div>
           </template>
           <template #default> 
+              <router-view></router-view>
           </template>
            
         </WLayout> 
