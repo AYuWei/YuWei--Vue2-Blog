@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <div class="contact"> 
+  <div class="app-container"> 
         <WLayout>
           <template #left>
             <div class="aside">
@@ -9,29 +8,34 @@
           </template>
           <template #default> 
               <router-view></router-view>
-              <div>
-                <p ref="para">some paragraph</p>
-                <WTest ref="comp" />
-                <button @click="handleClick">查看所有引用</button>
-              </div>
+              <div id="test">123</div>
           </template>
            
         </WLayout> 
-    </div>
-  </div>
+    </div> 
 </template>
 
 <script>
 import WLayout from "@/components/WLayout/WLayout.vue"; 
-import WAside from "@/components/WAside/WAside.vue";
-import WTest from "@/components/WTest/ChildComp.vue";
+import WAside from "@/components/WAside/WAside.vue"; 
 
 export default { 
   // 全局注册组件
   components : {
     WLayout,
-    WAside,
-    WTest
+    WAside, 
+  },
+  created(){
+    console.log("挂在完成！")
+    this.$showMessage({
+      content : "好棒棒呀~",
+      type : "info",
+      duration:2000,
+      callback : function(){
+        console.log("完蛋~")
+      }
+
+    })
   },
   methods : {
      handleClick() {
@@ -55,16 +59,14 @@ export default {
 
 <style lang="less">
 @import "~@/styles/var.less";
-#app{
-  position:fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  .contact{
-    width: 100%;
-    height: 100%;
-  }
+@import "~@/styles/mixin.less";
+#test{
+  width: 500px;
+  height:500px;
+  border: 1px solid black;
+} 
+.app-container {
+  .self-fill(fixed);
 }
 .aside{
   width:250px;

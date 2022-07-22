@@ -93,3 +93,19 @@ export default {
 } 
 </script> 
 ```
+
+### showMessage 注入到全局了、直接用
+```js
+  created(){
+    console.log("挂在完成！")
+    this.$showMessage({
+      content : "好棒棒呀~",
+      type : "info",
+      duration:2000,
+      callback : function(){
+        console.log("完蛋~")
+      }
+
+    })
+  },
+```

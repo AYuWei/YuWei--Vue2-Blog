@@ -19,8 +19,8 @@ export default{}
 <style lang="less" scoped>
 .layout-container{
     width: 100%;
-    height: 100%;
-    display: flex;
+    height: 100%; 
+    display: flex; 
     .left,
     .right{
         flex: 0 0 auto; // 大小保存不变
