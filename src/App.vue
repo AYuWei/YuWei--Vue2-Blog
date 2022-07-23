@@ -8,7 +8,9 @@
           </template>
           <template #default> 
               <router-view></router-view>
-              <div id="test">123</div>
+              <div id="test">
+                <button @click="getAjax">点击获取</button>
+              </div>
           </template>
            
         </WLayout> 
@@ -18,7 +20,7 @@
 <script>
 import WLayout from "@/components/WLayout/WLayout.vue"; 
 import WAside from "@/components/WAside/WAside.vue"; 
-
+import banner from "@/api/banner"
 export default { 
   // 全局注册组件
   components : {
@@ -38,20 +40,11 @@ export default {
     })
   },
   methods : {
-     handleClick() {
-      // 获取持有的所有引用
-      console.log(this.$refs);
-      // console.log(this.$refs.comp.a, this.$refs.comp.b);
-      this.$refs.comp.a = 3;
-      this.$refs.comp.b = 4;
-      this.$refs.comp.m1();
-      /*
-        {
-        	para: p元素（原生DOM）,
-        	comp: ChildComp的组件实例
-        }
-        */
-    },
+      async getAjax(){
+        // console.log("请求", api)
+        const data = await banner();
+        console.log(data);
+      }
   }
 }
 
