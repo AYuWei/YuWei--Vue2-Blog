@@ -27,6 +27,7 @@ export default{}
         overflow: hidden;
     }
     .main {
+        position: relative;
         flex: 1 0 auto; // 大小自由伸缩
         overflow: hidden;
     }

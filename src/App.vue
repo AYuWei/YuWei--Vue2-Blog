@@ -7,10 +7,7 @@
             </div>
           </template>
           <template #default> 
-              <router-view></router-view>
-              <div id="test">
-                <button @click="getAjax">点击获取</button>
-              </div>
+              <router-view></router-view> 
           </template>
            
         </WLayout> 
@@ -19,8 +16,7 @@
 
 <script>
 import WLayout from "@/components/WLayout/WLayout.vue"; 
-import WAside from "@/components/WAside/WAside.vue"; 
-import banner from "@/api/banner"
+import WAside from "@/components/WAside/WAside.vue";  
 export default { 
   // 全局注册组件
   components : {
@@ -28,23 +24,10 @@ export default {
     WAside, 
   },
   created(){
-    console.log("挂在完成！")
-    this.$showMessage({
-      content : "好棒棒呀~",
-      type : "info",
-      duration:2000,
-      callback : function(){
-        console.log("完蛋~")
-      }
-
-    })
+ 
   },
   methods : {
-      async getAjax(){
-        // console.log("请求", api)
-        const data = await banner();
-        console.log(data);
-      }
+      
   }
 }
 
