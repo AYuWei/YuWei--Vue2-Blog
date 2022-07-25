@@ -1,10 +1,5 @@
 <template>
-    <div 
-    class="home-container" 
-    ref="container"
-    @wheel="handleWheel"
-    v-loading="isLoading"
-    >
+    <div class="home-container" ref="container" @wheel="handleWheel">
         <!-- 轮播图内容 -->
         <ul class="carousel-container" :style="{marginTop}">
             <li v-for="item in banners" :key="item.id"> 
@@ -35,30 +30,33 @@
             }"
             @click="switchTo(i)"
             v-for="(item, i) in banners" :key="item.id"> </li>
-        </ul> 
+        </ul>
+        <WLoading v-if="isloading" /> 
     </div>
 </template>
 <script>
     // home 实现轮播图的框架结构 内容提取出去
     import banner from "@/api/banner"; 
     import WCarouseLitem from "./WCarouseLitem"; // 轮播图内容
-    import WIcon from "@/components/WIcon/WIcon"; // 字体图标  
+    import WIcon from "@/components/WIcon/WIcon"; // 字体图标 
+    import WLoading from "@/components/WLoading/WLoading.vue"; // 加载loading
     export default {
         components: {
             WCarouseLitem,
-            WIcon, 
+            WIcon,
+            WLoading, 
         },
         data(){
             return {
-                isLoading : true,
+                isloading : true,
                 banners:[] , // 首页轮播图数据
                 index:0 , // 当前显示的是第几张轮播图
                 containerHeight : 0,  // 整个容器的高度、万一高度变化后需要改变 
             }
         },
         async created(){
-            this.banners = await banner(); 
-            this.isLoading = false;
+            this.banners = await banner();
+            this.isloading = !this.isloading; 
         },
         mounted(){
             this.containerHeight = this.$refs.container.clientHeight; 

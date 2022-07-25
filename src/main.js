@@ -9,6 +9,10 @@ Vue.prototype.$showMessage = showMessage;
 
 // import "./api/banner";
 
+// 全局注册指令
+import VLoading from "@/directives/loading"
+Vue.directive("loading", VLoading);
+
 new Vue({   
   router,
   render: h => h(App),

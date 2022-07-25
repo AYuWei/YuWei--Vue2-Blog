@@ -62,8 +62,7 @@ export default {
     },
     // 生命周期函数、dom挂在完成后
     // 可以获取标题高度和描述容器高度 
-    mounted(){
-        console.log(this.carousel)
+    mounted(){ 
         this.titleWidth = this.$refs.title.clientWidth;
         this.descWidth = this.$refs.desc.clientWidth; 
         this.titleHeight = this.$refs.title.clientHeight;
