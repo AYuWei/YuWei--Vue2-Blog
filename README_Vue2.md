@@ -109,3 +109,61 @@ export default {
     })
   },
 ```
+
+### 自定义指令 自定义Loading
+
+自定义指令方便我们自行定义需要使用的指令、就和自定义组件一样、可以全局注册、也可以局部注册
+
+`vue使用`
+```vue
+<div 
+    class="home-container" 
+    ref="container"
+    @wheel="handleWheel"
+    v-loading="isLoading"
+></div>
+```
+`loading.js`
+```js
+import loadingUrl from "@/assets/loading.svg";
+import styles from "./loading.module.less";
+
+// 得到el中loading效果的img元素
+function getLoadingImage(el){
+    return el.querySelector("img[data-role=loading]");
+}
+
+// 创建一个img dom元素
+function createElementeImgDom(){
+    const imgDom = document.createElement("img");
+    imgDom.dataset.role = "loading";
+    imgDom.src = loadingUrl;
+    imgDom.className = styles.loading;
+    return imgDom;
+}
+/**
+ * 
+ * @param {\} el 拿到dom元素
+ * @param {*} binding  可以拿到传递过来的值， 我们这里使用 value 是否加载完成
+ */ 
+export default function( el , binding ){
+    const curImg = getLoadingImage(el); // 判断是否页面上已经创建
+    // 根据 binding.value 的值，决定创建或删除img元素
+    if( binding.value ){
+        if(!curImg){
+            const img = createElementeImgDom();
+            el.appendChild(img);
+        }
+    } else {
+        if( curImg ){
+            curImg.remove();
+        }
+    }
+}
+```
+`main.js全局注册`
+```js
+// 全局注册指令
+import VLoading from "@/directives/loading"
+Vue.directive("loading", VLoading);
+```
