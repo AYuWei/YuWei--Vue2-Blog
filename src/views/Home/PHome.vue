@@ -7,7 +7,7 @@
     >
         <!-- 轮播图内容 -->
         <ul class="carousel-container" :style="{marginTop}">
-            <li v-for="item in banners" :key="item.id"> 
+            <li v-for="item in data" :key="item.id"> 
                 <WCarouseLitem :carousel="item" /> 
             </li>
         </ul>
@@ -23,7 +23,7 @@
         <div 
             class="icon icon-down" 
             @click="switchTo(index + 1)"
-            v-show="index < banners.length - 1"
+            v-show="index < data.length - 1"
         >
             <WIcon type="arrowDown" />
         </div>
@@ -34,7 +34,7 @@
                 active : i === index,
             }"
             @click="switchTo(i)"
-            v-for="(item, i) in banners" :key="item.id"> </li>
+            v-for="(item, i) in data" :key="item.id"> </li>
         </ul> 
     </div>
 </template>
@@ -43,27 +43,24 @@
     import banner from "@/api/banner"; 
     import WCarouseLitem from "./WCarouseLitem"; // 轮播图内容
     import WIcon from "@/components/WIcon/WIcon"; // 字体图标  
+    import fatchData from "@/mixin/fatchData.js"
     export default {
+        mixins : [fatchData([])],
         components: {
             WCarouseLitem,
             WIcon, 
         },
         data(){
-            return {
-                isLoading : true,
-                banners:[] , // 首页轮播图数据
+            return { 
                 index:0 , // 当前显示的是第几张轮播图
                 containerHeight : 0,  // 整个容器的高度、万一高度变化后需要改变 
             }
-        },
-        async created(){
-            this.banners = await banner(); 
-            this.isLoading = false;
-        },
+        }, 
         mounted(){
             this.containerHeight = this.$refs.container.clientHeight; 
             // 注册一个窗口改变事件
             window.addEventListener("resize", this.handleResize);
+           
         },
         destroyed() {
             // 销毁注册的窗口改变事件
@@ -80,6 +77,11 @@
             handleResize() {
                 this.containerHeight = this.$refs.container.clientHeight;
             },
+            // 获取主页中的数据 
+            async aafatchData(){
+                return await banner();
+            }
+
         },
         computed : {
             // 高滚动的高度
