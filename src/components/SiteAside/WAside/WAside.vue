@@ -16,8 +16,8 @@
 
 <script>
 import WAvatar from "@/components/WAvatar/WAvatar.vue" 
-import WContact from "@/components/WContact/WContact.vue" 
-import WMenu from "@/components/WMenu/WMenu.vue" 
+import WContact from "@/components/SiteAside/WContact/WContact.vue" 
+import WMenu from "@/components/SiteAside/WMenu/WMenu.vue" 
 export default {
     components : {
         WAvatar,

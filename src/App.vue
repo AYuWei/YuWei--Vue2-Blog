@@ -15,7 +15,7 @@
 
 <script>
 import WLayout from "@/components/WLayout/WLayout.vue"; 
-import WAside from "@/components/WAside/WAside.vue";  
+import WAside from "@/components/SiteAside/WAside/WAside.vue";  
 export default { 
   // 全局注册组件
   components : {

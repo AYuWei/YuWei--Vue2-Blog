@@ -1,9 +1,11 @@
 <template>
     <div class="menu-container">
         <router-link 
+            :exact="item.exact"
             v-for="item in items"
             :key="item.name"  
             :to="{name:item.name}"
+             active-class="selected" 
         >
             <div class="icon">
                 <WIcon :type="item.icon"></WIcon>
@@ -25,26 +27,31 @@ export default {
                     name:"Home", 
                     title : "首页",
                     icon : "home", 
+                    exact: true
                 },
                 {
                     name:"Blog", 
                     title : "文章",
                     icon : "blog",  
+                    exact: false 
                 },
                 {
                     name:"About", 
                     title : "关于我",
                     icon : "about", 
+                    exact: true
                 },
                 {
                     name:"Project", 
                     title : "项目&效果",
                     icon : "code", 
+                    exact: true
                 },
                 {
                     name:"Message", 
                     title : "留言板",
                     icon : "chat", 
+                    exact: true
                 },
             ]
         }

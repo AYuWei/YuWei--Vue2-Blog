@@ -26,7 +26,7 @@
                </a>
                <div class="pop">
                     <img
-                        src="../../Images/weixin.jpg"
+                        :src="imageSrcW"
                         alt=""
                     />
                 </div>
@@ -40,7 +40,7 @@
                </a>
                <div class="pop">
                     <img
-                        src="../../Images/qq.jpg"
+                        :src="imageSrcQ"
                         alt=""
                     />
                 </div>
@@ -50,13 +50,21 @@
     </div>    
 </template>
 <script>  
-import WIcon from "../../components/WIcon/WIcon";
+import WIcon from "@/components/WIcon/WIcon";
+import imageSrcW from "@/Images/weixin.jpg";
+import imageSrcQ from "@/Images/qq.jpg";
 // import WIcon from "@/components/WIcon/WIcon.vue";
 import "@/styles/global.less";
 export default{
     components:{
         WIcon
-    } 
+    },
+    data(){
+        return {
+            imageSrcW,
+            imageSrcQ
+        }
+    }
 };
 </script>
 <style lang="less" scoped>
