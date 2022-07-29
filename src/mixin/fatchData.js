@@ -9,7 +9,7 @@ export default function(defaultDataValue = null){
             }
         },
         async created(){
-            this.data = await this.aafatchData(); 
+            this.data = await this.fatchData(); 
             this.isLoading = false;
         }
     }

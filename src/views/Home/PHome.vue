@@ -78,7 +78,7 @@
                 this.containerHeight = this.$refs.container.clientHeight;
             },
             // 获取主页中的数据 
-            async aafatchData(){
+            async fatchData (){
                 return await banner();
             }
 

@@ -34,17 +34,17 @@ export default {
 
 <style lang="less">
 @import "~@/styles/var.less";
-@import "~@/styles/mixin.less";
-#test{
-  width: 500px;
-  height:500px;
-  border: 1px solid black;
-} 
+@import "~@/styles/mixin.less"; 
 .app-container {
   .self-fill(fixed);
+  .layout-container{
+    .main{
+      // background:@words;
+    }
+  }
 }
 .aside{
   width:250px;
   height: 100%;
-}
+} 
 </style>

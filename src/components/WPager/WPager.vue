@@ -41,16 +41,16 @@
     justify-content: center;
     margin: 20px 0;
     a{
-        color: @primary;
+        color: @success;
         margin: 0 6px;
         cursor: pointer; // 鼠标样式
         text-decoration: none;
         &.disabled{
-            color: @lightWords;
+            color: @gray;
             cursor: not-allowed; // 静止点击的样式
         }
         &.active{
-            color: @words;
+            color: @wheatBlog;
             font-weight: bold;
             cursor: text;
         }
