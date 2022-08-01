@@ -13,15 +13,16 @@
 <script>  
 import WLayout from "@/components/WLayout/WLayout.vue";
 import BlogList from "./components/BlogList.vue";
-import BlogCategory from "./components/BlogCategory.vue";
+import BlogCategory from "./components/BlogCategory.vue"; 
+
 // import {getBlogs} from "@/api/blog"; // 获取文章列表 
 export default {
-    components:{ 
-        // WRightList,
-        WLayout,
-        BlogList,
-        BlogCategory
-    }, 
+    components:{
+    // WRightList,
+    WLayout,
+    BlogList,
+    BlogCategory, 
+}, 
     // async created (){
     //     let abc = await getBlogs(); 
     //     console.log(abc)
