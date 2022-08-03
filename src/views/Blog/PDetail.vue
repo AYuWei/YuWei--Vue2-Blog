@@ -3,7 +3,7 @@
   <div class="detail-container"> 
     <WLayout>
         <template #default>
-            <div class="detail-main" v-loading="isLoading">
+            <div class="detail-main" ref="container" v-loading="isLoading">
                 <!-- 文章内容 -->
                 <BlogDetail v-if="data" :blog="data"/>                                                                                                                                     
                 <!-- 文章评论 -->
@@ -27,14 +27,16 @@ import BlogTOC from "./components/BlogTOC.vue";
 import { getBlog } from "@/api/blog.js";
 import fatchData from "@/mixin/fatchData";
 import BlogComment from "./components/BlogComment.vue";
+// 注册混合滚动条事件
+import setMainScroll from "@/mixin/setMainScroll";
 export default {
-    mixins : [fatchData(null)],
+    mixins : [fatchData(null), setMainScroll('container')],
     components : {
-    WLayout,
-    BlogDetail,
-    BlogTOC,
-    BlogComment
-},
+        WLayout,
+        BlogDetail,
+        BlogTOC,
+        BlogComment
+    },  
     methods : {
         /**
          * 获取单个博客的地址
@@ -43,7 +45,14 @@ export default {
             const data =  await getBlog(this.$route.params.id);
             console.log("单个博客的地址",data);
             return data;
-        }
+        } 
+    }, 
+    updated(){
+        const hash = location.hash;
+        location.hash = "";
+        setTimeout(() => {
+            location.hash = hash;
+        }, 50);
     }
 }
 </script>

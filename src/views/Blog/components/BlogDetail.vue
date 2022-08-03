@@ -36,9 +36,6 @@ export default {
   },  
   methods : {
     formatDate
-  },
-  mounted(){
-    console.log("我是内容显示区域",this.blog);
   }
 }
 </script> 

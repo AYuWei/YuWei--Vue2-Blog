@@ -10,18 +10,21 @@
               <router-view></router-view> 
           </template> 
         </WLayout> 
+        <ToTop /> 
     </div> 
 </template>
 
 <script>
 import WLayout from "@/components/WLayout/WLayout.vue"; 
-import WAside from "@/components/SiteAside/WAside/WAside.vue";  
+import WAside from "@/components/SiteAside/WAside/WAside.vue";
+import ToTop from "./components/ToTop/ToTop.vue";  
 export default { 
   // 全局注册组件
   components : {
     WLayout,
-    WAside, 
-  },
+    WAside,
+    ToTop
+},
   created(){
  
   },

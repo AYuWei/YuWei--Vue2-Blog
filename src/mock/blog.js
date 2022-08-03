@@ -21,8 +21,8 @@ Mock.mock("/api/blogtype", "get", {
  * 获取博客列表数据
  */
 Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function(options) {
-const query = qs.parse(options.url);
-console.log("blog.js : ", query)
+  const query = qs.parse(options.url);
+
   return Mock.mock({
     code: 0,
     msg: "",
@@ -39,7 +39,10 @@ console.log("blog.js : ", query)
           },
           "scanNumber|0-3000": 0,
           "commentNumber|0-300": 30,
-          "thumb|0-1": Mock.Random.image("300x250", "#008c8c", "#fff", "Random Image"),
+          "thumb|1": [
+            Mock.Random.image("300x250", "#000", "#fff", "Random Image"),
+            null,
+          ],
           createDate: `@date('T')`,
         },
       ],
@@ -315,7 +318,7 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/, "get", function (options) {
     code: 0,
     msg: "",
     data: {
-      "total|50-200": 0,
+      total: 50,
       [`rows|${query.limit || 10}`]: [
         {
           id: "@guid",

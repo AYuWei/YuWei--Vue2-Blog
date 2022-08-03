@@ -59,24 +59,19 @@ import { formatDate } from "@/utils"; // 时间戳的转化格式
 import fatchData from "@/mixin/fatchData.js"; // 混入、获取数据的公用数据
 import { getBlogs } from "@/api/blog.js"; // 博客中的数据
 import WPage from "@/components/WPager/WPager.vue" ; // 分页组件
+// 滚动条混合
+import setMainScroll from "@/mixin/setMainScroll.js";
 export default {
-    mixins:[fatchData([])],
+    mixins:[fatchData([]), setMainScroll('container')],
     components : {
         WPage
-    },
-    data(){
-        return { 
-        }
-    },
-    created(){
-        console.log("routeInfo", this.routeInfo ); 
     },
     computed:{
         routeInfo(){                             
             const categoryId = + this.$route.params.categoryId || -1;
             const pages = + this.$route.query.page || 1;
             const limit = + this.$route.query.limit || 10;  
-            console.log("router信息：", this.$route)
+            // console.log("router信息：", this.$route)
             return {
                 categoryId, // 分类id
                 pages, // 第几页
@@ -105,17 +100,14 @@ export default {
             // 跳转当前分类的id 
             // 没有分类 
             if( this.routeInfo.categoryId === -1 ){
-                // /article?page=${newPage}&limit=${this.routeInfo.limit}
-                console.log("没有分类", query  )
-
+                // /article?page=${newPage}&limit=${this.routeInfo.limit} 
                 this.$router.push({
                     name : "Blog",
                     query
                 })
             } else {
                 // 有分类
-                // /article/cate/${this.routeInfo.categoryId}?page=${newPage}&limit=${this.routeInfo.limit}
-                console.log("有分类", query , this.routeInfo.categoryId.toString())
+                // /article/cate/${this.routeInfo.categoryId}?page=${newPage}&limit=${this.routeInfo.limit} 
                 this.$router.push({
                     name : "CategoryBlog",
                     query,
@@ -124,23 +116,20 @@ export default {
                     },
                 })
             }
-        }
-
-    },
+        },
+    }, 
     // 监听事件的变换
     watch:{
         // 监听route路由变化
-        async $route(){
-            console.log("路由变化了", this.routeInfo)
+        async $route(){ 
             // 开启加载图标
             this.isLoading = true;
             // 将滚动条滚上去
-            this.$refs.container.scrollTop = "0px";
+            this.$refs.container.scrollTop = 0;
             // 重新请求数据
             this.data = await this.fatchData();
             // 关闭加载图标
-            this.isLoading = false;
-
+            this.isLoading = false; 
         }
     }
 

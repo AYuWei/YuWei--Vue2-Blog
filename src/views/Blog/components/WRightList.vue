@@ -43,6 +43,7 @@ export default {
             cursor: pointer;
             color:@words; 
             padding-right: 8px;
+    
         }
         .active {
             color: @wheatBlog;

@@ -78,9 +78,7 @@ export default {
         },
         // 数据请求
         async fatchData(){
-            let data = await getBlogCategories();
-            console.log("分类数据：",data);
-            return data;
+            return await getBlogCategories();  
         }
     }
 }

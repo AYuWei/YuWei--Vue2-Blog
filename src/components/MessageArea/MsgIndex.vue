@@ -63,4 +63,8 @@ import MegListData from "./MsgListData.vue";
  }
  h2{ 
  }
+ .loading{
+    position: relative;
+    height: 40px;
+ }
  </style>
