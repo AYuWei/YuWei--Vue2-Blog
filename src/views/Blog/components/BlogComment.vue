@@ -31,10 +31,7 @@ export default {
         page : 1, 
         limit : 10,
       }
-    },
-    mounted(){
-      console.log("1-1 评论数",this.data.rows);
-    },
+    }, 
     computed : {
       // 判断是不是不可以在加载数据了
       hasMore(){
@@ -59,8 +56,7 @@ export default {
         const res = await postComment( {
           ...formData,
           blogId : this.$route.params.id 
-        } ); 
-        console.log("提交评论的返回结果", res)
+        } );  
         this.data.rows.unshift(res);
         this.data.total ++;
         callback("评论成功！");
@@ -73,8 +69,7 @@ export default {
         if(!this.hasMore) return ; // 没有更多的评论数据了
         this.isLoading = true;
         this.page ++;
-        const resp = await this.fatchData(); // 重新请求评论数据
-        console.log("加载评论数据",resp.rows, this.data.rows);
+        const resp = await this.fatchData(); // 重新请求评论数据 
         this.data.total = resp.total;
         // 添加到之前的评论列表里面去
         this.data.rows = this.data.rows.concat(resp.rows);

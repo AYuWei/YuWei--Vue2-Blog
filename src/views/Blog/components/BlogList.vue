@@ -12,7 +12,8 @@
                             id: item.id,
                         },
                     }">
-                        <img :src="item.thumb" :alt="item.title" /> 
+                        <img v-lazy="item.thumb" :alt="item.title" /> 
+                        <!-- <img :src="item.thumb" :alt="item.title" />  -->
                     </router-link>
                 </div>
                 <!-- 文章详情页面 -->

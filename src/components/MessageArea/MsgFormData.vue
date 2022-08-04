@@ -66,8 +66,7 @@ export default {
       this.isSubmiting = true;
       // 1.将事件抛给父组件来处理事件 
       // 2.父组件处理完成后则执行回调出来本身事件
-      this.$emit("submit", this.formData, (successMsg)=>{
-        console.log("我是MegFormData",successMsg);
+      this.$emit("submit", this.formData, (successMsg)=>{  
         this.$showMessage({
           content : successMsg,
           type : "success",

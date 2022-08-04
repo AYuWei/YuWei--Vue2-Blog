@@ -30,6 +30,7 @@ export default {
 */
 
 import Vue from "vue";
+const app = new Vue({});
 /*
  * 事件名：mainScroll
  * 含义：主区域滚动条位置变化后触发
@@ -42,4 +43,6 @@ import Vue from "vue";
  * 参数：
  * - 滚动高度
  */
-Vue.prototype.$bus = new Vue({});
+Vue.prototype.$bus = app;
+export default app;
+

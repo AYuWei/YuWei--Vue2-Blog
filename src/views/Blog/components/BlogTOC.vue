@@ -72,11 +72,7 @@ export default {
  destroyed(){
   // 销毁监听滚动事件
   this.$bus.$off("mainScroll", this.setSelectDebounce)
- },
-  mounted(){
-    console.log("TOC列表", this.tocWithSelect )
-    console.log("Dom列表", this.doms )
-  },
+ }, 
   methods: {
     handleSelect(item) {
       location.hash = item.anchor;

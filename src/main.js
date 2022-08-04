@@ -12,7 +12,9 @@ import "./eventBus.js";
   
 // 全局注册指令
 import VLoading from "@/directives/loading"
+import VLazy from "@/directives/lazy"
 Vue.directive("loading", VLoading);
+Vue.directive("lazy", VLazy);
 
 new Vue({   
   router,
