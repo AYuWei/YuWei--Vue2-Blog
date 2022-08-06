@@ -6,15 +6,15 @@
                     <div class="icon">
                         <WIcon type="github" />
                     </div>
-                    <span>AYuWei</span>
+                    <span>{{data.githubName}}</span>
                </a>
             </li>
              <li>
-               <a href="mailto:ayuwei0804@126.com">
+               <a :href="data.mail">
                     <div class="icon">
                         <WIcon type="mail" />
                     </div>
-                    <span>ayuwei0804@126.com</span>
+                    <span>{{data.mail}}</span>
                </a>
             </li>
             <li>
@@ -22,11 +22,11 @@
                     <div class="icon weixin">
                         <WIcon type="weixin" />
                     </div>
-                    <span>AYuWei0804</span>
+                    <span>{{data.weixin}}</span>
                </a>
                <div class="pop">
                     <img
-                        :src="imageSrcW"
+                        :src="data.weixinQrCode"
                         alt=""
                     />
                 </div>
@@ -36,11 +36,11 @@
                     <div class="icon">
                         <WIcon type="qq" />
                     </div>
-                    <span>1422041216</span>
+                    <span>{{data.qq}}</span>
                </a>
                <div class="pop">
                     <img
-                        :src="imageSrcQ"
+                        :src="data.qqQrCode"
                         alt=""
                     />
                 </div>
@@ -55,10 +55,12 @@ import imageSrcW from "@/Images/weixin.jpg";
 import imageSrcQ from "@/Images/qq.jpg";
 // import WIcon from "@/components/WIcon/WIcon.vue";
 import "@/styles/global.less";
+import { mapState } from 'vuex';
 export default{
     components:{
         WIcon
     },
+    computed:mapState("setting", ["data"]),
     data(){
         return {
             imageSrcW,

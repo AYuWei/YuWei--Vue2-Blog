@@ -1,16 +1,16 @@
 <template>
     <div class="aside-container">
-        <div class="aside-avatar">
+        <div class="aside-avatar" v-if="data">
             <WAvatar
-                url="https://img2.baidu.com/it/u=4244269751,4000533845&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+                :url="data['avatar']"
                 :size="100"
             />
             <div class="author">
-                Vue2_小小青柠蓝莓
+                {{ data["siteTitle"] }}
             </div>
         </div>
-        <WMenu /> 
-        <WContact/>
+        <WMenu v-if="data" /> 
+        <WContact v-if="data" />
     </div>
 </template>
 
@@ -18,12 +18,14 @@
 import WAvatar from "@/components/WAvatar/WAvatar.vue" 
 import WContact from "@/components/SiteAside/WContact/WContact.vue" 
 import WMenu from "@/components/SiteAside/WMenu/WMenu.vue" 
+import { mapState } from "vuex"
 export default {
     components : {
         WAvatar,
         WContact,
         WMenu
-    }
+    },
+    computed : mapState("setting",["data"]) 
 }
 </script>
 

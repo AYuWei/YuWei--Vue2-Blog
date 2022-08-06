@@ -29,6 +29,7 @@ import fatchData from "@/mixin/fatchData";
 import BlogComment from "./components/BlogComment.vue";
 // 注册混合滚动条事件
 import setMainScroll from "@/mixin/setMainScroll";
+import { titleController } from "@/utils"
 export default {
     mixins : [fatchData(null), setMainScroll('container')],
     components : {
@@ -43,6 +44,8 @@ export default {
          */
         async fatchData(){
             const data =  await getBlog(this.$route.params.id);
+            // 设置标题
+            titleController.setRouterTitle( data['title'] );
             console.log("单个博客的地址",data);
             return data;
         } 

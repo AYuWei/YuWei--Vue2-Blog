@@ -40,12 +40,13 @@
 </template>
 <script>
     // home 实现轮播图的框架结构 内容提取出去
-    import banner from "@/api/banner"; 
+    // import banner from "@/api/banner"; 
     import WCarouseLitem from "./WCarouseLitem"; // 轮播图内容
     import WIcon from "@/components/WIcon/WIcon"; // 字体图标  
-    import fatchData from "@/mixin/fatchData.js"
+    import { mapState } from "vuex"; //  
+    // import fatchData from "@/mixin/fatchData.js"
     export default {
-        mixins : [fatchData([])],
+        // mixins : [fatchData([])], /* 使用仓库的数据获取了请求 */
         components: {
             WCarouseLitem,
             WIcon, 
@@ -55,7 +56,17 @@
                 index:0 , // 当前显示的是第几张轮播图
                 containerHeight : 0,  // 整个容器的高度、万一高度变化后需要改变 
             }
-        }, 
+        },  
+        created(){
+            this.$store.dispatch("banner/fetchBanner");
+        },
+        computed : {
+            // 高滚动的高度
+            marginTop(){
+                return -this.index * this.containerHeight + "px";
+            },
+            ...mapState("banner",["isLoading","data"])
+        },
         mounted(){
             this.containerHeight = this.$refs.container.clientHeight; 
             // 注册一个窗口改变事件
@@ -78,16 +89,10 @@
                 this.containerHeight = this.$refs.container.clientHeight;
             },
             // 获取主页中的数据 
-            async fatchData (){
-                return await banner();
-            }
+            // async fatchData (){
+            //     return await banner();
+            // }
 
-        },
-        computed : {
-            // 高滚动的高度
-            marginTop(){
-                return -this.index * this.containerHeight + "px";
-            }
         }
     }
 </script>

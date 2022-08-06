@@ -23,9 +23,9 @@ export default {
         // 立即处理它
         setImage(img);
     },
-    unbind(el){
-        console.log("unbind", el)
-    }
+    // unbind(el){
+    //     console.log("unbind", el)
+    // }
 }
 
 function setImage(img){
@@ -45,8 +45,7 @@ function setImage(img){
         tempImg.src = img.src;
         // img.dom.src = img.src;
         imgs = imgs.filter((i) => i !== img);
-      }
-    console.log("123", img, clientHeight)
+      } 
 }
 
 eventBus.$on("mainScroll", debounce(handleScroll, 50));
