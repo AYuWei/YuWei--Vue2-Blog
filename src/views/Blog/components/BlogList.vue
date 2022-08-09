@@ -1,6 +1,7 @@
 <!-- 博客文章列表组件 -->
 <template>
     <div class="blog-category-container" ref="container" v-loading="isLoading">
+        <WEmpty title="无数据" v-if="data.rows.length === 0 && !isLoading" />
         <ul class="blog-ul">
             <li class="blog-li" v-for="(item) in data.rows" :key="item.id">
                 <!-- 如果文章又图片则左边显示图片 -->
@@ -12,60 +13,54 @@
                             id: item.id,
                         },
                     }">
-                        <img v-lazy="item.thumb" :alt="item.title" /> 
+                        <img v-lazy="item.thumb" :alt="item.title" />
                         <!-- <img :src="item.thumb" :alt="item.title" />  -->
                     </router-link>
                 </div>
                 <!-- 文章详情页面 -->
-                <div class="blog-main"> 
-                    <router-link 
-                        :to="{
-                            name:'BlogDetail',
-                            // 地址栏中的参数
-                            params: { 
-                                id: item.id,
-                            },
-                        }" 
-                    > 
+                <div class="blog-main">
+                    <router-link :to="{
+                        name:'BlogDetail',
+                        // 地址栏中的参数
+                        params: { 
+                            id: item.id,
+                        },
+                    }">
                         <div class="blog-title">{{item.title}}</div>
                     </router-link>
                     <div class="blog-detail">
                         <div class="detail-date list">{{"日期 : " + formatDate(item.createDate)}}</div>
                         <div class="detail-scan list">{{"浏览 : " + item.scanNumber }}</div>
                         <div class="detail-comment list">{{"评论 : " + item.commentNumber }}</div>
-                        <div class="detail-category list">{{"分类 : " + item.category.name }}</div> 
+                        <div class="detail-category list">{{"分类 : " + item.category.name }}</div>
                     </div>
                     <div class="blog-description">
                         {{
-                            item.description
+                        item.description
                         }}
                     </div>
                 </div>
-            </li> 
+            </li>
         </ul>
         <!-- 分页组件 current:当前页码 total数据总数 limit页容量  visibleNumber可见页码数-->
-        <WPage 
-            v-if="data.total"
-            :current="routeInfo.pages" 
-            :total="data.total" 
-            :limit="routeInfo.limit" 
-            :visibleNumber="10"
-            @pageChange="PagerChange"    
-        />   
-    </div> 
+        <WPage v-if="data.total" :current="routeInfo.pages" :total="data.total" :limit="routeInfo.limit"
+            :visibleNumber="10" @pageChange="PagerChange" />
+    </div>
 </template>
 
 <script>
 import { formatDate } from "@/utils"; // 时间戳的转化格式
 import fatchData from "@/mixin/fatchData.js"; // 混入、获取数据的公用数据
 import { getBlogs } from "@/api/blog.js"; // 博客中的数据
-import WPage from "@/components/WPager/WPager.vue" ; // 分页组件
+import WPage from "@/components/WPager/WPager.vue"; // 分页组件
+import WEmpty from "@/components/WEmpty/WEmpty.vue"
 // 滚动条混合
 import setMainScroll from "@/mixin/setMainScroll.js";
 export default {
     mixins:[fatchData([]), setMainScroll('container')],
     components : {
-        WPage
+        WPage,
+        WEmpty
     },
     computed:{
         routeInfo(){                             
@@ -140,7 +135,7 @@ export default {
 @import "@/styles/var.less";
 .blog-category-container{ 
     height:100%;
-    width:100%; 
+    width:100%;  
     line-height: 1.7;
     position: relative;
     padding: 20px;
@@ -158,7 +153,7 @@ export default {
             margin-bottom:15px;
             padding:10px; 
             box-shadow: 0px 0px 3px @gray;
-            min-width: 900px;
+            min-width: 250px;
             .blog-thumb{
                 flex: 0 0 auto;
                 margin-right: 15px;
@@ -171,9 +166,9 @@ export default {
             .blog-main{
                 flex: 1 1 auto; 
                 .blog-title{ 
-                    line-height: 1.4; 
-                    font-size: 1.7em; 
-                    letter-spacing: 5px; 
+                    line-height: 1.2;
+                    font-size: 1.3em; 
+                    letter-spacing: 4px; 
                     font-weight: bold;
                     &:hover{
                         color: @gray;
@@ -181,8 +176,8 @@ export default {
                 }
                 .blog-detail{ 
                     display: flex;
-                    min-width:650px;
-                    height:40px;
+                    // min-width:650px;
+                    line-height:40px;
                     align-items: center;
                     font-size: 1em;
                     .list{
@@ -190,8 +185,10 @@ export default {
                     }
                 }
                 .blog-description{ 
-                    font-size: 1.2em;
+                    font-size: 1em;
+                    letter-spacing: 1px;  
                     font-weight: bold;
+                    text-align: justify;
                 }
 
             }

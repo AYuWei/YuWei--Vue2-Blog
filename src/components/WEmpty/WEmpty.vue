@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import MyIcom from "@/components/MyIcon/MyIndex.vue"
+import MyIcom from "@/components/WIcon/WIcon.vue"
 export default { 
     props:{
         title:{

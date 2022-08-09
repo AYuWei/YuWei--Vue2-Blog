@@ -7,7 +7,7 @@
       :subTitle="`(${data.total})`" 
       :list="data.rows"
       :isListLoading="isLoading" 
-      @submit="handleSubmit"
+      @submit="handleSubmit" 
     />
   </div>
 </template>
@@ -76,8 +76,7 @@ export default {
         this.isLoading = false;
       },
       // 监听滚动条
-      handleScroll(dom){
-        // console.log("我要滚动了", dom.scrollTop)
+      handleScroll(dom){ 
         if(this.isLoading || !dom) return ; // 目前正在加载更多
         const range = 100; // 一个到底部可接受的范围
         const dec = Math.abs( dom.scrollTop + dom.clientHeight - dom.scrollHeight );

@@ -5,6 +5,9 @@ module.exports = {
     Proxy : {
       "/api" : {
          target : "http://test.my-site.com"
+      },
+      "/blog-img" : {
+        target : "http://rgajwjxis.hn-bkt.clouddn.com"
       }
     }
   }

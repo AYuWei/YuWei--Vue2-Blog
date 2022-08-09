@@ -30,6 +30,7 @@ import MegListData from "./MsgListData.vue";
       MegListData
   },
   props : {
+    // 标题
     Title : {
       type : String,
       default : "",

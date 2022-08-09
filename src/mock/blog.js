@@ -20,7 +20,7 @@ Mock.mock("/api/blogtype", "get", {
 /**
  * 获取博客列表数据
  */
-Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function(options) {
+Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function (options) {
   const query = qs.parse(options.url);
 
   return Mock.mock({
@@ -296,10 +296,15 @@ Mock.mock("/api/comment", "post", {
     content: "@cparagraph(1, 10)",
     createDate: Date.now(),
     "avatar|1": [
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg",
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg",
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar8.jpg",
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar2.jpg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/05555512a1e07a3658584426c1bc5b3e_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/1aaf2703245a213a80e2e7357996586e_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/1c4671651c918e84fd15c784c37f47d1_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/439b9db6e28aa12faa67633d8e0b7061_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/4a9327efcb1214edd59595a8df707553_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/8c023dea13b118b723264e756abb5654_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/951d1660687c8ae080f6d167a5184186_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/f9a46313bbfd8ed7566cef320b5e52f8_2000x2000.jpeg",
+      "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/bb9d3d9e01279c37955dbcfef0aed4a8_2000x2000.jpeg",
     ],
   },
 });
@@ -327,10 +332,15 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/, "get", function (options) {
           content: "@cparagraph(1, 10)",
           createDate: Date.now(),
           "avatar|1": [
-            "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg",
-            "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg",
-            "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar8.jpg",
-            "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar2.jpg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/05555512a1e07a3658584426c1bc5b3e_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/1aaf2703245a213a80e2e7357996586e_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/1c4671651c918e84fd15c784c37f47d1_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/439b9db6e28aa12faa67633d8e0b7061_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/4a9327efcb1214edd59595a8df707553_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/8c023dea13b118b723264e756abb5654_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/951d1660687c8ae080f6d167a5184186_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/f9a46313bbfd8ed7566cef320b5e52f8_2000x2000.jpeg",
+            "http://rgajwjxis.hn-bkt.clouddn.com/ayuwei/bb9d3d9e01279c37955dbcfef0aed4a8_2000x2000.jpeg",
           ],
         },
       ],

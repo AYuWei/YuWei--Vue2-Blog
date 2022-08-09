@@ -4,19 +4,21 @@
     'totop-container' : true,
     show : show
   }" @click="handleClick" >
-    TOP
-    <span class="top"> </span>
+    <img :src="imgSrc"/> 
+    <!-- <span class="top"> </span>
     <span class="bottom"> </span>
     <span class="left"> </span>
-    <span class="right"> </span>
+    <span class="right"> </span> -->
   </div>
 </template>
 
 <script>
+import imgsrc from "@/assets/top.png"
 export default {
     data(){
         return {
-            show:false
+            show: false,
+            imgSrc: imgsrc
         }
     },
     // 方法
@@ -48,11 +50,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+
+
+
 @import "@/styles/var.less";
 .totop-container{
     position: fixed; 
-    right: 100px;
-    background: lightsteelblue;
+    right: 25px;
+    background: #ebebeb;
     font-size: 15px;
     font-weight: bold;
     height: 50px;
@@ -61,63 +67,94 @@ export default {
     text-align: center;
     border-radius: 50%;
     user-select: none;  
-    transition-duration: 500ms;
-    transform: rotateY(0deg);
-    transform: rotateX(90deg);
-    bottom: 50px;
-    transform: rotate(0deg);  
+    transition-duration: 500ms; 
+    bottom: 100px; 
     opacity: 0;
     &.show{  
-        transform: rotateY(90deg);
-        transform: rotateX(0deg); 
-        transform: rotate(360deg);
-        opacity: 1;   
-    }
-    cursor: pointer;
-    .top{
-        // background: #539b0a;
-        background: @wheatBlog;
-        width: 5px;
-        height: 10px;
-        display: inline-block;
-        position: absolute;
-        left: 22px;
-        top: -4px;
-        border-radius: 9px;
-    }
-    .right{
-        width: 10px;
-        height: 5px;
-        // background: #e91e63;
-        background: @wheatBlog;
-
-        display: inline-block;
-        top: 21px;
-        right: -4px;
-        position: absolute;
-        border-radius: 9px;
-    }
-    .left{
-        display: inline-block;
-        width: 10px;
-        height: 5px;
-        background: @wheatBlog;
-        // background: red;
-        left: -4px;
-        position: absolute;
-        top: 22px;
-        border-radius: 9px;
-    }
-    .bottom{
-        display: inline-block;
-        width: 5px;
-        height: 10px;
-        background: @wheatBlog;
-        // background: #044f8b;
-        left: 23px;
-        position: absolute;
-        bottom: -4px;
-        border-radius: 9px;
-    }
+            transform: rotateY(90deg);
+            transform: rotateX(0deg); 
+            transform: rotate(360deg);
+            opacity: 1;   
+        }
 }
+img{
+        width: 20px;
+        height: 20px;
+        top: 50%; 
+        position: absolute;
+        left: 50%;
+        margin-top: -10px;
+        margin-left: -10px;
+}
+// .totop-container{
+//     position: fixed; 
+//     right: 100px;
+//     background: lightsteelblue;
+//     font-size: 15px;
+//     font-weight: bold;
+//     height: 50px;
+//     width: 50px;
+//     line-height: 50px;
+//     text-align: center;
+//     border-radius: 50%;
+//     user-select: none;  
+//     transition-duration: 500ms;
+//     transform: rotateY(0deg);
+//     transform: rotateX(90deg);
+//     bottom: 50px;
+//     transform: rotate(0deg);  
+//     opacity: 0;
+//     &.show{  
+//         transform: rotateY(90deg);
+//         transform: rotateX(0deg); 
+//         transform: rotate(360deg);
+//         opacity: 1;   
+//     }
+//     cursor: pointer;
+//     .top{
+//         // background: #539b0a;
+//         background: @wheatBlog;
+//         width: 5px;
+//         height: 10px;
+//         display: inline-block;
+//         position: absolute;
+//         left: 22px;
+//         top: -4px;
+//         border-radius: 9px;
+//     }
+//     .right{
+//         width: 10px;
+//         height: 5px;
+//         // background: #e91e63;
+//         background: @wheatBlog;
+
+//         display: inline-block;
+//         top: 21px;
+//         right: -4px;
+//         position: absolute;
+//         border-radius: 9px;
+//     }
+//     .left{
+//         display: inline-block;
+//         width: 10px;
+//         height: 5px;
+//         background: @wheatBlog;
+//         // background: red;
+//         left: -4px;
+//         position: absolute;
+//         top: 22px;
+//         border-radius: 9px;
+//     }
+//     .bottom{
+//         display: inline-block;
+//         width: 5px;
+//         height: 10px;
+//         background: @wheatBlog;
+//         // background: #044f8b;
+//         left: 23px;
+//         position: absolute;
+//         bottom: -4px;
+//         border-radius: 9px;
+//     }
+// }
 </style>

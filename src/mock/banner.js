@@ -1,13 +1,13 @@
 import Mock from "mockjs"
 
 Mock.mock("/api/banner", "get", {
-    code : 0, // 0是无错误  406:验证失败  500:服务器内部的未知错误
+    code: 0, // 0是无错误  406:验证失败  500:服务器内部的未知错误
     msg: "",
     data: [
         {
             id: "1",
-            midImg: "http://mdrs.yuanjin.tech/img/20201031141507.jpg",
-            bigImg: "http://mdrs.yuanjin.tech/img/20201031141350.jpg",
+            midImg: "http://rgajwjxis.hn-bkt.clouddn.com/blog-img/xiaoyetongzhi1.jpg",
+            bigImg: "http://rgajwjxis.hn-bkt.clouddn.com/blog-img/xiaoyetongzhi1.jpg",
             title: "凛冬将至",
             description: "人唯有恐惧的时候方能勇敢",
         },
